@@ -1,0 +1,13 @@
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Employee List</ion-label>
+    </ion-list-header>
+    @for ( employeeId of employeeMap.keys(); track $index) {
+    <ion-item button  (click)="goToDetail(employeeId)">
+      <ion-label>Employee ID: {{ employeeMap.get(employeeId)?.employee_id}}</ion-label>
+      <ion-label>Name: {{ employeeMap.get(employeeId)?.first_name }}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
+</ion-content>
