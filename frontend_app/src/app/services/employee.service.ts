@@ -14,4 +14,9 @@ export class EmployeeService {
     let data = this.http.get<Employee[]>(urlBackendHttp);
     return data;
   }
+
+  getEmployee(id: number) {
+    let data = this.http.get<Employee>(urlBackendHttp + id.toString());
+    return data;
+  }
 }
