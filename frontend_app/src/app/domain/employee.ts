@@ -6,4 +6,5 @@ export interface Employee {
     salary : number
     date_join : Date
     on_field : boolean
+    [key: string]: any; 
 }

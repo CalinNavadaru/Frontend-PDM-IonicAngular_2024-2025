@@ -19,4 +19,9 @@ export class EmployeeService {
     let data = this.http.get<Employee>(urlBackendHttp + id.toString());
     return data;
   }
+
+  updateEmployee(data: any, id: number) {
+    let response = this.http.put(urlBackendHttp + id.toString() + '/', data);
+    return response;
+  }
 }

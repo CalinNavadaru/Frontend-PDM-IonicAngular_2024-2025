@@ -20,26 +20,32 @@
       <ion-list>
         <ion-item>
           <ion-label>First Name: </ion-label>
-          <ion-input label="Text input" placeholder="John"></ion-input>
+          <ion-input label="Text input" placeholder="John" formControlName="first_name"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Last Name: </ion-label>
-          <ion-input label="Text input" placeholder="Marston"></ion-input>
+          <ion-input label="Text input" placeholder="Marston" formControlName="last_name"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Date: </ion-label>
-          <ion-input label="Text input" placeholder="John"></ion-input>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-datetime id="datetime" formControlName="date_join"></ion-datetime>
+        </ion-item>        
+        <ion-item>
+          <ion-label>Salary: </ion-label>
+          <ion-input type="number" placeholder="Enter salary" formControlName="salary"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>First Name: </ion-label>
-          <ion-input label="Text input" placeholder="John"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>First Name: </ion-label>
-          <ion-input label="Text input" placeholder="John"></ion-input>
+          <ion-checkbox formControlName="on_field">Is working on the field</ion-checkbox>
         </ion-item>
       </ion-list>
+      <ion-button type="ngSubmit"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Edit Employee</ion-button>
     </form>
   </ion-content>
-  <ion-button (click)="editEmployee()"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Edit Employee</ion-button>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    [message]="toastMessage"
+    [duration]="5000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
 </ion-content>
