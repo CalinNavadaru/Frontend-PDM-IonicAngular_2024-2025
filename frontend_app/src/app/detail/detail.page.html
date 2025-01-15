@@ -34,6 +34,15 @@
         <ion-label position="stacked">On Field</ion-label>
         <ion-text>{{ employee.on_field ? 'Yes' : 'No' }}</ion-text>
       </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Location: </ion-label>
+        <div id="map" style="height: 300px;"></div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Profile Picture</ion-label>
+        <ion-img [src]="'data:image/jpeg;base64,' + employee.profile_picture"></ion-img> </ion-item>
     </ion-card-content>
   </ion-card>
 

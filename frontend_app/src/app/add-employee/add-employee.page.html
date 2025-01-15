@@ -35,8 +35,22 @@
             <ion-checkbox formControlName="on_field" required
             [class.invalid]="on_field?.invalid && on_field?.touched">Is working on the field</ion-checkbox>
           </ion-item>
+          <ion-item>
+            <ion-label>Location: Click on map to select location</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Map: </ion-label>
+            <div id="map" style="height: 300px;"></div>
+          </ion-item>
+          <ion-item>
+            <ion-label>Imagine</ion-label>
+            <ion-button (click)="selectImage()" expand="full">
+              Selectează sau Fă o poză
+            </ion-button>
+            <ion-img *ngIf="employeeForm.get('profile_picture')?.value" [src]="'data:image/jpeg;base64,' + employeeForm.get('profile_picture')?.value" alt="Imagine selectată"></ion-img>
+          </ion-item>
         </ion-list>
-        <ion-button type="ngSubmit"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Add Employee</ion-button>
+        <ion-button type="ngSubmit" [disabled]="employeeForm.invalid"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Add Employee</ion-button>
       </form>
     </ion-content>
     <ion-toast
