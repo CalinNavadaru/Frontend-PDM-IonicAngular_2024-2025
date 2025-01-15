@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { EmployeeNotification } from '../domain/employee-notification';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,13 @@ export class EmployeeUpdatesWebSocketService {
   private socket!: WebSocket;
   private messages: Subject<EmployeeNotification>;
 
-  constructor() { 
+  constructor(private auth: AuthService) { 
     this.messages = new Subject<EmployeeNotification>;
   }
 
   public connect(url: string) {
-    this.socket = new WebSocket(url);
+    const token = this.auth.getToken();
+    this.socket = new WebSocket(url + `?token=${token}`);
     
     this.socket.onopen = () => {
       console.log("Websocket deschis");
@@ -33,6 +35,10 @@ export class EmployeeUpdatesWebSocketService {
     this.socket.onclose = (event: CloseEvent) => {
       console.log('WebSocket inchis', event);
     };
+  }
+
+  public close() {
+    this.socket.close();
   }
 
   public getEmployeeUpdates() {

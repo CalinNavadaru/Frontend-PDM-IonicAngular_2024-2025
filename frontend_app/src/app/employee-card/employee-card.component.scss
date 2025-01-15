@@ -1,0 +1,20 @@
+ion-card {
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  ion-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  ion-card-subtitle {
+    font-size: 0.9rem;
+    color: gray;
+  }
+  
+  ion-item {
+    --background: transparent;
+  }
+  

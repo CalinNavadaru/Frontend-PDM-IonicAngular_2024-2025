@@ -1,0 +1,80 @@
+ion-header {
+  background: linear-gradient(to right, #4e73df, #1f3bb3);
+}
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+}
+
+ion-content {
+  padding: 20px;
+}
+
+ion-list {
+  margin-top: 20px;
+}
+
+ion-item {
+  margin-bottom: 15px;
+}
+
+ion-label {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333;
+}
+
+ion-input, ion-datetime, ion-checkbox {
+  --padding-start: 10px;
+}
+
+ion-input {
+  --border-radius: 8px;
+}
+
+ion-button {
+  width: 95%;
+  margin-top: 20px;
+  background-color: #4e73df;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+ion-button:hover {
+  background-color: #365eab;
+}
+
+ion-toast {
+  --background: #ff3333;
+  --color: white;
+  --border-radius: 8px;
+}
+
+.invalid {
+  --border-color: red !important;
+}
+
+ion-checkbox {
+  --padding-start: 0px;
+  --margin-start: 0px;
+  --background: #f4f5f8;
+}
+
+ion-checkbox .checkbox-icon {
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+ion-checkbox .checkbox-icon.checked {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}

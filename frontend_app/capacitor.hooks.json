@@ -1,0 +1,5 @@
+{
+    "postsync": {
+        "script": "node scripts/add-network-permissions.js"
+    }
+}

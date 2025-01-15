@@ -1,11 +1,12 @@
 <ion-app>
-  <ion-header [translucent]="true">
+  <app-network-status></app-network-status>
+  <ion-header>
     <ion-toolbar>
-      <ion-title>
-        Employees Management
-      </ion-title>
+      <ion-title>Employee List</ion-title>
+      <ion-button (click)="Logoutlick()"slot="end">Logout</ion-button>
     </ion-toolbar>
   </ion-header>
+
   <ion-content>
     <ion-router-outlet></ion-router-outlet>
   </ion-content>

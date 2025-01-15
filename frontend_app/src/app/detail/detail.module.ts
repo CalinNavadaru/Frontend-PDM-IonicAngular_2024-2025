@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailPageRoutingModule } from './detail-routing.module';
 
 import { DetailPage } from './detail.page';
+import { EmployeeCardComponent } from "../employee-card/employee-card.component";
 
 @NgModule({
   imports: [
@@ -14,8 +15,9 @@ import { DetailPage } from './detail.page';
     FormsModule,
     IonicModule,
     DetailPageRoutingModule,
-    ReactiveFormsModule, 
-  ],
+    ReactiveFormsModule,
+    EmployeeCardComponent
+],
   declarations: [DetailPage]
 })
 export class DetailPageModule {}

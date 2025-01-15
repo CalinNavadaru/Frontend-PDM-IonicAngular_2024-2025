@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Employee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-content>
+      <form [formGroup]="this.employeeForm" (ngSubmit)="addEmployee()">
+        <ion-list>
+          <ion-item>
+            <ion-label>First Name: </ion-label>
+            <ion-input  placeholder="John" formControlName="first_name" required
+            [class.invalid]="first_name?.invalid && first_name?.touched"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Last Name: </ion-label>
+            <ion-input  placeholder="Marston" formControlName="last_name" required
+            [class.invalid]="last_name?.invalid && last_name?.touched"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date: </ion-label>
+              <ion-datetime id="datetime" formControlName="date_join" required
+              [class.invalid]="date_join?.invalid && date_join?.touched"></ion-datetime>
+          </ion-item>        
+          <ion-item>
+            <ion-label>Salary: </ion-label>
+            <ion-input type="number" placeholder="Enter salary" formControlName="salary" required
+            [class.invalid]="salary?.invalid && salary?.touched"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox formControlName="on_field" required
+            [class.invalid]="on_field?.invalid && on_field?.touched">Is working on the field</ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <ion-button type="ngSubmit"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Add Employee</ion-button>
+      </form>
+    </ion-content>
+    <ion-toast
+      [isOpen]="isToastOpen"
+      [message]="toastMessage"
+      [duration]="5000"
+      (didDismiss)="setOpen(false)"
+    ></ion-toast>
+  </ion-content>
+

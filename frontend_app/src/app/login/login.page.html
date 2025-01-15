@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large">Login/Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" formControlName="username" required
+        [class.invalid]="loginUsername?.invalid && loginUsername?.touched"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" required
+        [class.invalid]="loginPassword?.invalid && loginPassword?.touched"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">
+      Login
+    </ion-button>
+  </form>
+  <form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" formControlName="username" required
+        [class.invalid]="signUpUsername?.invalid && signUpUsername?.touched"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" required
+        [class.invalid]="signUpPassword?.invalid && signUpPassword?.touched"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="signUpForm.invalid">
+      SignUp
+    </ion-button>
+  </form>
+</ion-content>

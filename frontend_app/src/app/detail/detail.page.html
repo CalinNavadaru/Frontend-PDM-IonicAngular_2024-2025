@@ -1,51 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Employee Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <ion-card>
-    <ion-card-title>{{ this.employee.last_name }} {{this.employee.first_name}}</ion-card-title>
-    <ion-card-content> <ion-list>
-        <ion-item>
-          <ion-label>Data: {{ this.employee.date_join}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>Salary: {{ this.employee.salary }}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>On field: {{ this.employee.on_field }}</ion-label>
-        </ion-item>
-      </ion-list>
+  <ion-card *ngIf="employee">
+    <ion-card-header>
+      <ion-card-title>{{ employee.first_name }} {{ employee.last_name }}</ion-card-title>
+      <ion-card-subtitle>{{ employee.salary | currency }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-text>{{ employee.first_name }}</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-text>{{ employee.last_name }}</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Date Joined</ion-label>
+        <ion-text>{{ employee.date_join | date: 'yyyy-MM-dd' }}</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">On Field</ion-label>
+        <ion-text>{{ employee.on_field ? 'Yes' : 'No' }}</ion-text>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-content>
-    <form [formGroup]="this.employeeForm" (ngSubmit)="editEmployee()">
-      <ion-list>
-        <ion-item>
-          <ion-label>First Name: </ion-label>
-          <ion-input label="Text input" placeholder="John" formControlName="first_name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Last Name: </ion-label>
-          <ion-input label="Text input" placeholder="Marston" formControlName="last_name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Date: </ion-label>
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-            <ion-datetime id="datetime" formControlName="date_join"></ion-datetime>
-        </ion-item>        
-        <ion-item>
-          <ion-label>Salary: </ion-label>
-          <ion-input type="number" placeholder="Enter salary" formControlName="salary"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox formControlName="on_field">Is working on the field</ion-checkbox>
-        </ion-item>
-      </ion-list>
-      <ion-button type="ngSubmit"><ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>Edit Employee</ion-button>
-    </form>
-  </ion-content>
-  <ion-toast
-    [isOpen]="isToastOpen"
-    [message]="toastMessage"
-    [duration]="5000"
-    (didDismiss)="setOpen(false)"
-  ></ion-toast>
+  <!-- Loading or error handling if employee data is missing -->
+  <ion-card *ngIf="!employee">
+    <ion-card-header>
+      <ion-card-title>Loading...</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

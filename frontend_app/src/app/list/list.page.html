@@ -1,13 +1,29 @@
-<ion-content>
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Employee List</ion-label>
-    </ion-list-header>
-    @for ( employeeId of employeeMap.keys(); track $index) {
-    <ion-item button  (click)="goToDetail(employeeId)">
-      <ion-label>Employee ID: {{ employeeMap.get(employeeId)?.employee_id}}</ion-label>
-      <ion-label>Name: {{ employeeMap.get(employeeId)?.first_name }}</ion-label>
-    </ion-item>
-    }
-  </ion-list>
+<ion-content [fullscreen]="true">
+  <ion-searchbar show-clear-button="focus" [debounce]="500" value="Show on Focus" [(ngModel)]="lastNameSearch"
+    (ionInput)="onSearchChange($event)"></ion-searchbar>
+  <div *ngIf="lastNameSearch === ''">
+    <ion-list>
+      @for(employee of this.displayedEmployees; track $index) {
+      <app-employee-card (click)="goToDetail(employee.employee_id)"
+        [employeeID]="employee.employee_id"></app-employee-card>
+      }
+    </ion-list>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreEmployees($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more employees...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </div>
+  <div *ngIf="lastNameSearch">
+    <ion-list>
+      @for(employee of this.filteredEmployees; track $index) {
+      <app-employee-card (click)="goToDetail(employee.employee_id)"
+        [employeeID]="employee.employee_id"></app-employee-card>
+      }
+    </ion-list>
+  </div>
+  <ion-button shape="round" icons="" class="floating-button" (click)="onClick()">
+    <ion-icon name="add"></ion-icon>
+  </ion-button>
 </ion-content>
