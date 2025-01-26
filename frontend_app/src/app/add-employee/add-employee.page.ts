@@ -61,6 +61,7 @@ export class AddEmployeePage implements OnInit {
       console.log(this.employeeForm.value);
       this.employeeService.addEmployee(this.employeeForm.value).subscribe(data => {
         console.log(data);
+        alert("The employee's data was be added.");
       }, error => {
         alert("The employee's data couldn't be added.");
         console.log(error);
@@ -96,6 +97,7 @@ export class AddEmployeePage implements OnInit {
   }
 
   async selectImage() {
+    console.log("[TEST]")
     const actionSheet = await this.actionSheetController.create({
       header: 'Choose an option',
       buttons: [
@@ -110,6 +112,7 @@ export class AddEmployeePage implements OnInit {
             this.employeeForm.patchValue({
               profile_picture: photo.base64String
             });
+            console.log("[TEST]" + photo.base64String);
             console.log(photo.base64String);
           }
         },
@@ -124,6 +127,8 @@ export class AddEmployeePage implements OnInit {
             this.employeeForm.patchValue({
               profile_picture: photo.base64String
             });
+            console.log("[TEST]" + this.employeeForm.get('profile_picture')?.value)
+            console.log("[TEST]" + photo.base64String);
           }
         },
         {
